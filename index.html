@@ -3,560 +3,543 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>피지컬 AI 제조 AX 캠퍼스 1기 모집</title>
+<title>피지컬 AI 제조 AX 캠퍼스</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Orbitron:wght@700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-  --navy: #050d1f;
-  --blue: #1a3a6b;
-  --accent: #f5a623;
-  --accent2: #ff6b35;
+  --bg: #050a14;
+  --bg2: #0a1225;
+  --surface: rgba(255,255,255,0.03);
+  --surface2: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.06);
+  --border-accent: rgba(79,195,247,0.15);
+  --accent: #f0a030;
+  --accent2: #ff6830;
   --cyan: #4fc3f7;
+  --cyan-dim: rgba(79,195,247,0.08);
   --white: #ffffff;
-  --gray: #8899bb;
-  --card-bg: rgba(255,255,255,0.04);
-  --card-border: rgba(79,195,247,0.18);
+  --t1: #e8edf5;
+  --t2: #a0b0c8;
+  --t3: #607090;
+  --danger: #ff5252;
+  --max-w: 960px;
+  --side: max(20px, calc((100vw - var(--max-w)) / 2));
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
 body {
-  background:var(--navy);
-  color:var(--white);
-  font-family:'Noto Sans KR',sans-serif;
-  overflow-x:hidden;
-  -webkit-text-size-adjust:100%;
-}
-body::before {
-  content:'';
-  position:fixed;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(79,195,247,0.04) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(79,195,247,0.04) 1px,transparent 1px);
-  background-size:60px 60px;
-  pointer-events:none;
-  z-index:0;
-}
-section { position:relative; z-index:1; }
-
-/* NAV */
-nav {
-  position:fixed; top:0; left:0; right:0; z-index:100;
-  padding:14px 20px;
-  display:flex; align-items:center; justify-content:space-between;
-  background:rgba(5,13,31,0.92);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(79,195,247,0.1);
-}
-.nav-logo {
-  font-family:'Orbitron',sans-serif;
-  font-size:12px; font-weight:700;
-  color:var(--white); letter-spacing:1px;
-  white-space:nowrap;
-}
-.nav-logo em { font-style:normal; color:var(--accent); }
-.nav-links { display:flex; gap:20px; list-style:none; }
-.nav-links a { color:var(--gray); text-decoration:none; font-size:13px; transition:color 0.2s; }
-.nav-links a:hover { color:var(--white); }
-.nav-cta {
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  color:#fff !important; padding:8px 16px;
-  border-radius:20px; font-weight:700;
-  font-size:12px !important; white-space:nowrap;
+  background: var(--bg);
+  color: var(--t1);
+  font-family: 'Noto Sans KR', sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+  letter-spacing: -0.02em;
 }
 
-/* HERO */
+/* ── UTILITY ── */
+.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+.tag {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--cyan); display: block; margin-bottom: 14px;
+}
+.sec-title {
+  font-size: clamp(24px, 4.5vw, 36px);
+  font-weight: 900; line-height: 1.35;
+  word-break: keep-all; margin-bottom: 16px;
+}
+.sec-title em { font-style: normal; color: var(--accent); }
+.sec-desc { font-size: 15px; color: var(--t2); word-break: keep-all; max-width: 560px; }
+.sec-head { margin-bottom: 48px; }
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 56px; display: flex; align-items: center;
+  background: rgba(5,10,20,0.88);
+  backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom: 1px solid var(--border);
+}
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+.nav-brand { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 800; color: var(--white); letter-spacing: 0.5px; }
+.nav-brand span { color: var(--accent); }
+.nav-menu { display: flex; gap: 28px; list-style: none; align-items: center; }
+.nav-menu a { font-size: 13px; color: var(--t2); text-decoration: none; font-weight: 500; transition: color .2s; }
+.nav-menu a:hover { color: var(--white); }
+.nav-apply {
+  display: inline-block; background: var(--accent); color: var(--bg) !important;
+  font-weight: 700; font-size: 12px !important; padding: 7px 18px;
+  border-radius: 6px; transition: background .2s;
+}
+.nav-apply:hover { background: var(--accent2); }
+
+/* ── HERO ── */
 .hero {
-  min-height:100vh;
-  display:flex; align-items:center; justify-content:center;
-  padding:100px 20px 60px;
-  background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(26,58,107,0.6) 0%,transparent 70%);
-  text-align:center;
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 120px 0 80px;
+  overflow: hidden;
 }
-.hero-badge {
-  display:inline-block;
-  border:1px solid var(--cyan); color:var(--cyan);
-  font-size:11px; letter-spacing:1px;
-  padding:6px 16px; border-radius:20px;
-  margin-bottom:24px; word-break:keep-all;
-  line-height:1.6;
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 40%, rgba(79,195,247,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 20% 70%, rgba(240,160,48,0.04) 0%, transparent 60%);
 }
+.hero .wrap { position: relative; z-index: 1; }
+.hero-kicker {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--t2); margin-bottom: 28px;
+  padding: 8px 16px; border: 1px solid var(--border-accent);
+  border-radius: 8px; background: var(--surface);
+}
+.hero-kicker strong { color: var(--cyan); font-weight: 600; }
 .hero h1 {
-  font-weight:900;
-  font-size:clamp(28px,7vw,64px);
-  line-height:1.25; margin-bottom:16px;
+  font-size: clamp(32px, 6.5vw, 56px);
+  font-weight: 900; line-height: 1.22;
+  margin-bottom: 20px; word-break: keep-all;
 }
 .hero h1 em {
-  font-style:normal;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  font-style: normal;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-.hero-sub { font-size:clamp(13px,3vw,18px); color:var(--gray); margin-bottom:16px; }
-.hero-desc {
-  font-size:14px; color:#aabbd0;
-  max-width:520px; margin:0 auto 32px;
-  line-height:1.8; word-break:keep-all;
+.hero-sub { font-size: 17px; color: var(--t2); margin-bottom: 40px; max-width: 520px; word-break: keep-all; line-height: 1.8; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 56px; }
+.btn-fill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff; font-weight: 700; font-size: 15px;
+  padding: 14px 32px; border-radius: 10px;
+  text-decoration: none; transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 24px rgba(240,160,48,0.25);
 }
-.hero-cta {
-  display:inline-flex; align-items:center; gap:8px;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  color:#fff; font-weight:700; font-size:16px;
-  padding:16px 36px; border-radius:50px;
-  text-decoration:none;
-  box-shadow:0 4px 30px rgba(245,166,35,0.35);
-  transition:transform 0.2s,box-shadow 0.2s;
+.btn-fill:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(240,160,48,0.4); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1.5px solid var(--border-accent); color: var(--t2);
+  font-weight: 600; font-size: 15px;
+  padding: 13px 28px; border-radius: 10px;
+  text-decoration: none; transition: border-color .2s, color .2s;
 }
-.hero-cta:hover { transform:translateY(-3px); box-shadow:0 8px 40px rgba(245,166,35,0.5); }
-.hero-deadline { margin-top:14px; font-size:12px; color:#ff6b6b; word-break:keep-all; }
-.hero-stats {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px; margin-top:48px; width:100%; max-width:480px; margin-left:auto; margin-right:auto;
-}
-.stat-item { text-align:center; }
-.stat-num { font-family:'Orbitron',sans-serif; font-size:clamp(18px,5vw,32px); font-weight:900; color:var(--accent); }
-.stat-label { font-size:11px; color:var(--gray); margin-top:4px; }
+.btn-ghost:hover { border-color: var(--cyan); color: var(--white); }
 
-/* SECTION */
-.section { padding:60px 20px; max-width:1100px; margin:0 auto; }
-.section-tag { display:inline-block; font-size:11px; letter-spacing:3px; color:var(--cyan); text-transform:uppercase; margin-bottom:10px; }
-.section-title { font-size:clamp(22px,5vw,42px); font-weight:900; line-height:1.3; margin-bottom:32px; word-break:keep-all; }
-.section-title em { font-style:normal; color:var(--accent); }
-.divider { height:1px; background:linear-gradient(90deg,transparent,rgba(79,195,247,0.2),transparent); margin:0 20px; }
+.hero-nums { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-radius: 12px; overflow: hidden; max-width: 520px; }
+.hero-num-item { background: var(--bg2); padding: 20px 16px; text-align: center; }
+.hero-num-val { font-family: 'Outfit', sans-serif; font-size: clamp(20px, 4vw, 28px); font-weight: 800; color: var(--accent); }
+.hero-num-label { font-size: 12px; color: var(--t3); margin-top: 4px; }
 
-/* WHY GRID */
-.why-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+/* ── SECTION SPACING ── */
+.section { padding: 100px 0; }
+.section.alt { background: var(--bg2); }
+.divider-line { height: 1px; background: var(--border); }
+
+/* ── WHY CARDS ── */
+.why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 .why-card {
-  background:var(--card-bg); border:1px solid var(--card-border);
-  border-radius:16px; padding:24px 20px;
-  transition:border-color 0.3s;
+  padding: 28px 24px; border-radius: 14px;
+  background: var(--surface); border: 1px solid var(--border);
+  transition: border-color .3s, transform .3s;
 }
-.why-card:hover { border-color:var(--cyan); }
-.why-icon { font-size:28px; margin-bottom:12px; }
-.why-card h3 { font-size:15px; font-weight:700; margin-bottom:8px; color:var(--cyan); }
-.why-card p { font-size:13px; color:var(--gray); line-height:1.7; word-break:keep-all; }
+.why-card:hover { border-color: var(--border-accent); transform: translateY(-3px); }
+.why-card-icon { font-size: 28px; margin-bottom: 14px; }
+.why-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--white); }
+.why-card p { font-size: 13px; color: var(--t2); word-break: keep-all; }
 
-/* PHYSICAL AI */
-.phyai-wrap {
-  background:linear-gradient(135deg,rgba(26,58,107,0.4),rgba(10,22,40,0.8));
-  border:1px solid var(--card-border); border-radius:20px; padding:32px 20px;
+/* ── PHYSICAL AI ── */
+.phyai-box {
+  border-radius: 16px; border: 1px solid var(--border-accent);
+  background: linear-gradient(160deg, rgba(79,195,247,0.04) 0%, transparent 40%);
+  overflow: hidden;
 }
-.phyai-flow { display:flex; flex-direction:column; gap:12px; margin:28px 0; }
+.phyai-top { padding: 40px 32px 0; }
+.phyai-top p { font-size: 15px; color: var(--t2); text-align: center; margin-bottom: 32px; }
+.phyai-flow {
+  display: grid; grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center; gap: 0; padding: 0 32px 32px;
+}
 .phyai-step {
-  background:rgba(79,195,247,0.08); border:1px solid rgba(79,195,247,0.25);
-  border-radius:14px; padding:20px; display:flex; align-items:center; gap:16px;
+  background: var(--surface); border: 1px solid var(--border-accent);
+  border-radius: 12px; padding: 24px 20px; text-align: center;
 }
-.phyai-step-num { font-family:'Orbitron',sans-serif; font-size:11px; color:var(--cyan); letter-spacing:2px; white-space:nowrap; }
-.phyai-step h4 { font-size:15px; font-weight:700; margin-bottom:4px; }
-.phyai-step p { font-size:12px; color:var(--gray); line-height:1.5; }
-.phyai-arrow { text-align:center; color:var(--accent); font-size:20px; }
-.phyai-desc { font-size:13px; color:#aabbd0; line-height:1.9; text-align:center; word-break:keep-all; }
+.phyai-step-no { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: var(--cyan); letter-spacing: 2px; margin-bottom: 8px; }
+.phyai-step h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.phyai-step p { font-size: 12px; color: var(--t3); }
+.phyai-arrow { text-align: center; color: var(--accent); font-size: 20px; padding: 0 8px; }
+.phyai-bottom {
+  background: var(--surface); border-top: 1px solid var(--border);
+  padding: 28px 32px;
+}
+.phyai-bottom p { font-size: 14px; color: var(--t2); text-align: center; line-height: 1.8; word-break: keep-all; }
+.phyai-bottom strong { color: var(--accent); }
 
-/* CURRICULUM */
-.curriculum-timeline { position:relative; padding-left:24px; }
-.curriculum-timeline::before {
-  content:''; position:absolute; left:6px; top:0; bottom:0;
-  width:2px; background:linear-gradient(to bottom,var(--cyan),var(--accent),transparent);
+/* ── CURRICULUM ── */
+.cur-list { display: flex; flex-direction: column; gap: 16px; }
+.cur-item {
+  display: grid; grid-template-columns: 72px 1fr; gap: 20px;
+  padding: 24px; border-radius: 14px;
+  background: var(--surface); border: 1px solid var(--border);
+  transition: border-color .3s;
 }
-.phase { position:relative; margin-bottom:28px; }
-.phase::before {
-  content:''; position:absolute; left:-22px; top:18px;
-  width:12px; height:12px; background:var(--accent);
-  border-radius:50%; box-shadow:0 0 10px var(--accent);
+.cur-item:hover { border-color: var(--border-accent); }
+.cur-item.final { border-color: rgba(240,160,48,0.3); background: rgba(240,160,48,0.03); }
+.cur-badge {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: var(--cyan-dim); border-radius: 10px; padding: 8px;
 }
-.phase-inner {
-  background:var(--card-bg); border:1px solid var(--card-border);
-  border-radius:14px; padding:20px;
-}
-.phase-header { display:flex; align-items:center; gap:12px; margin-bottom:12px; flex-wrap:wrap; }
-.phase-label {
-  font-family:'Orbitron',sans-serif; font-size:10px; color:var(--cyan);
-  letter-spacing:2px; background:rgba(79,195,247,0.1);
-  padding:3px 10px; border-radius:20px; border:1px solid rgba(79,195,247,0.3);
-}
-.phase-week { font-size:12px; color:var(--gray); }
-.phase-title { font-size:17px; font-weight:700; margin-bottom:12px; word-break:keep-all; }
-.phase-tags { display:flex; flex-wrap:wrap; gap:6px; }
-.phase-tag {
-  background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
-  border-radius:20px; padding:3px 12px; font-size:11px; color:#aabbd0;
-}
-
-/* INSTRUCTORS */
-.instructor-grid { display:grid; grid-template-columns:1fr; gap:20px; }
-.instructor-card {
-  background:var(--card-bg); border:1px solid var(--card-border);
-  border-radius:18px; padding:24px;
-}
-.instructor-avatar {
-  width:56px; height:56px;
-  background:linear-gradient(135deg,var(--blue),var(--cyan));
-  border-radius:50%; display:flex; align-items:center; justify-content:center;
-  font-size:22px; margin-bottom:12px;
-}
-.instructor-name { font-size:18px; font-weight:700; margin-bottom:4px; }
-.instructor-spec { font-size:12px; color:var(--accent); margin-bottom:14px; }
-.instructor-list { list-style:none; display:flex; flex-direction:column; gap:5px; }
-.instructor-list li { font-size:12px; color:var(--gray); padding-left:14px; position:relative; line-height:1.5; word-break:keep-all; }
-.instructor-list li::before { content:'·'; position:absolute; left:3px; color:var(--cyan); }
-
-/* TARGET */
-.target-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
-.target-card {
-  background:var(--card-bg); border:1px solid var(--card-border);
-  border-radius:12px; padding:20px 16px; text-align:center;
-}
-.target-num { font-family:'Orbitron',sans-serif; font-size:10px; color:var(--accent); letter-spacing:2px; margin-bottom:10px; }
-.target-card p { font-size:13px; line-height:1.6; color:#ccd9ee; word-break:keep-all; }
-
-/* BA TABLE → 모바일은 카드형 */
-.ba-wrap { display:flex; flex-direction:column; gap:12px; margin-top:32px; }
-.ba-row {
-  display:grid; grid-template-columns:1fr auto 1fr; gap:8px; align-items:center;
-}
-.ba-before {
-  background:var(--card-bg); border:1px solid var(--card-border);
-  border-radius:10px; padding:14px 12px; font-size:13px; color:#ccd9ee; text-align:center; word-break:keep-all;
-}
-.ba-after {
-  background:rgba(245,166,35,0.05); border:1px solid rgba(245,166,35,0.2);
-  border-radius:10px; padding:14px 12px; font-size:13px; color:var(--white); font-weight:600; text-align:center; word-break:keep-all;
-}
-.ba-arr { color:var(--accent); font-size:16px; text-align:center; }
-.ba-header { display:grid; grid-template-columns:1fr auto 1fr; gap:8px; }
-.ba-header span { font-size:13px; font-weight:700; text-align:center; padding:8px 0; }
-.ba-header .h-before { color:var(--cyan); }
-.ba-header .h-after { color:var(--accent); }
-
-/* BENEFITS */
-.benefits-wrap {
-  background:linear-gradient(135deg,rgba(26,58,107,0.3),rgba(5,13,31,0.8));
-  border:1px solid var(--card-border); border-radius:20px; padding:28px 20px;
-}
-.free-badge {
-  display:inline-flex; align-items:center; gap:8px;
-  background:linear-gradient(90deg,rgba(245,166,35,0.15),rgba(255,107,53,0.1));
-  border:1px solid rgba(245,166,35,0.4); border-radius:50px;
-  padding:10px 20px; font-size:15px; font-weight:700; color:var(--accent);
-  margin-bottom:16px; word-break:keep-all; text-align:center;
-}
-.money-detail { display:grid; grid-template-columns:1fr; gap:12px; margin-top:20px; }
-.money-item {
-  background:var(--card-bg); border:1px solid var(--card-border);
-  border-radius:12px; padding:16px; text-align:center;
-}
-.money-item .amount { font-family:'Orbitron',sans-serif; font-size:18px; font-weight:900; color:var(--accent); margin-bottom:6px; }
-.money-item p { font-size:12px; color:var(--gray); line-height:1.5; }
-.benefits-grid { display:grid; grid-template-columns:1fr; gap:12px; margin-top:24px; }
-.benefit-item {
-  display:flex; align-items:flex-start; gap:14px;
-  background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06);
-  border-radius:12px; padding:18px 16px;
-}
-.benefit-icon { font-size:24px; flex-shrink:0; }
-.benefit-item h4 { font-size:14px; font-weight:700; margin-bottom:4px; color:var(--cyan); }
-.benefit-item p { font-size:12px; color:var(--gray); line-height:1.6; word-break:keep-all; }
-
-/* SCHEDULE */
-.schedule-grid { display:grid; grid-template-columns:1fr; gap:14px; }
-.schedule-card {
-  background:var(--card-bg); border:1px solid var(--card-border);
-  border-radius:14px; padding:20px;
-}
-.schedule-card.highlight { border-color:var(--accent); background:rgba(245,166,35,0.05); }
-.schedule-card h4 { font-size:12px; color:var(--cyan); letter-spacing:1px; margin-bottom:6px; }
-.schedule-date { font-family:'Orbitron',sans-serif; font-size:15px; font-weight:700; color:var(--white); margin-bottom:4px; }
-.schedule-desc { font-size:12px; color:var(--gray); word-break:keep-all; }
-
-/* PROCESS */
-.process-flow { display:grid; grid-template-columns:repeat(5,1fr); gap:4px; align-items:start; }
-.process-step { text-align:center; }
-.process-circle {
-  width:48px; height:48px; border-radius:50%;
-  border:2px solid var(--cyan); display:flex; align-items:center; justify-content:center;
-  font-size:18px; margin:0 auto 8px; background:rgba(79,195,247,0.08);
-}
-.process-step h4 { font-size:11px; font-weight:700; margin-bottom:2px; word-break:keep-all; }
-.process-step p { font-size:10px; color:var(--gray); word-break:keep-all; }
-.process-arrow { color:var(--accent); font-size:16px; text-align:center; padding-top:16px; }
-
-/* CTA */
-.cta-section {
-  padding:80px 20px; text-align:center;
-  background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(26,58,107,0.5) 0%,transparent 70%);
-}
-.cta-section h2 { font-size:clamp(22px,5vw,48px); font-weight:900; margin-bottom:14px; line-height:1.3; word-break:keep-all; }
-.cta-section h2 em { font-style:normal; color:var(--accent); }
-.cta-section p { color:var(--gray); font-size:14px; margin-bottom:32px; line-height:1.7; word-break:keep-all; }
-.cta-buttons { display:flex; flex-direction:column; gap:12px; align-items:center; }
-.btn-primary {
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  color:#fff; font-weight:700; font-size:16px;
-  padding:16px 40px; border-radius:50px; text-decoration:none;
-  box-shadow:0 4px 30px rgba(245,166,35,0.35); width:100%; max-width:320px;
-  text-align:center;
-}
-.btn-secondary {
-  background:transparent; color:var(--cyan); font-weight:700; font-size:16px;
-  padding:15px 40px; border-radius:50px; text-decoration:none;
-  border:2px solid var(--cyan); width:100%; max-width:320px; text-align:center;
+.cur-badge-phase { font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 700; color: var(--cyan); letter-spacing: 1px; }
+.cur-badge-week { font-size: 11px; color: var(--t3); margin-top: 2px; }
+.cur-item.final .cur-badge { background: rgba(240,160,48,0.08); }
+.cur-item.final .cur-badge-phase { color: var(--accent); }
+.cur-body h4 { font-size: 17px; font-weight: 700; margin-bottom: 10px; word-break: keep-all; }
+.cur-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.cur-tag {
+  font-size: 11px; color: var(--t2); padding: 3px 10px;
+  border-radius: 100px; background: var(--surface2); border: 1px solid var(--border);
 }
 
-/* CONTACT */
-.contact-bar {
-  background:rgba(255,255,255,0.03);
-  border-top:1px solid rgba(255,255,255,0.06);
-  padding:32px 20px; text-align:center;
+/* ── INSTRUCTORS ── */
+.inst-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.inst-card {
+  padding: 28px 24px; border-radius: 14px;
+  background: var(--surface); border: 1px solid var(--border);
+  transition: border-color .3s;
 }
-.contact-bar p { font-size:12px; color:var(--gray); margin-bottom:6px; word-break:keep-all; line-height:1.6; }
-.contact-info { display:flex; flex-direction:column; gap:12px; margin-top:16px; align-items:center; }
-.contact-item { display:flex; align-items:center; gap:8px; font-size:14px; color:var(--white); }
-.contact-item span { color:var(--cyan); }
-
-/* HIGHLIGHT BOX */
-.highlight-box {
-  background:linear-gradient(135deg,rgba(245,166,35,0.08),rgba(255,107,53,0.05));
-  border:1px solid rgba(245,166,35,0.25); border-radius:14px;
-  padding:20px; margin-top:28px; font-size:13px; color:#ddeeff;
-  line-height:1.8; text-align:center; word-break:keep-all;
+.inst-card:hover { border-color: var(--border-accent); }
+.inst-avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--cyan-dim), rgba(240,160,48,0.08));
+  border: 1px solid var(--border-accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; margin-bottom: 14px;
 }
-.highlight-box strong { color:var(--accent); }
+.inst-name { font-size: 18px; font-weight: 700; margin-bottom: 2px; }
+.inst-role { font-size: 12px; color: var(--accent); margin-bottom: 14px; font-weight: 500; }
+.inst-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.inst-list li {
+  font-size: 12px; color: var(--t2); padding-left: 12px;
+  position: relative; word-break: keep-all; line-height: 1.5;
+}
+.inst-list li::before { content: ''; position: absolute; left: 0; top: 7px; width: 4px; height: 4px; border-radius: 50%; background: var(--cyan); opacity: 0.5; }
 
-/* TABLET (768px+) */
-@media (min-width:768px) {
-  .section { padding:80px 40px; }
-  .hero { padding:120px 40px 80px; }
-  .why-grid { grid-template-columns:repeat(2,1fr); gap:20px; }
-  .why-card { padding:28px; }
-  .phyai-wrap { padding:48px 40px; }
-  .phyai-flow { flex-direction:row; align-items:center; gap:0; }
-  .phyai-step { flex:1; flex-direction:column; text-align:center; padding:24px; }
-  .phyai-arrow { font-size:24px; padding:0 12px; }
-  .instructor-grid { grid-template-columns:repeat(2,1fr); }
-  .target-grid { grid-template-columns:repeat(3,1fr); }
-  .money-detail { grid-template-columns:repeat(3,1fr); }
-  .benefits-grid { grid-template-columns:repeat(2,1fr); }
-  .schedule-grid { grid-template-columns:repeat(2,1fr); }
-  .cta-buttons { flex-direction:row; justify-content:center; }
-  .btn-primary,.btn-secondary { width:auto; }
-  .contact-info { flex-direction:row; justify-content:center; gap:32px; }
-  .hero-badge { font-size:12px; letter-spacing:2px; }
+/* ── TARGET ── */
+.tgt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.tgt-item {
+  padding: 20px 16px; border-radius: 12px;
+  background: var(--surface); border: 1px solid var(--border);
+  text-align: center; transition: border-color .3s;
+}
+.tgt-item:hover { border-color: var(--border-accent); }
+.tgt-no { font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 700; color: var(--accent); letter-spacing: 2px; margin-bottom: 10px; }
+.tgt-item p { font-size: 13px; color: var(--t1); word-break: keep-all; line-height: 1.6; }
+
+/* ── BA TABLE ── */
+.ba-title { font-size: 20px; font-weight: 800; margin: 56px 0 20px; }
+.ba-title em { font-style: normal; color: var(--accent); }
+.ba-grid { display: flex; flex-direction: column; gap: 10px; }
+.ba-header { display: grid; grid-template-columns: 1fr 32px 1fr; gap: 8px; padding: 0 4px; }
+.ba-header span { font-size: 12px; font-weight: 700; text-align: center; }
+.ba-header .h-b { color: var(--cyan); }
+.ba-header .h-a { color: var(--accent); }
+.ba-row { display: grid; grid-template-columns: 1fr 32px 1fr; gap: 8px; align-items: center; }
+.ba-cell {
+  padding: 14px 16px; border-radius: 10px; font-size: 13px;
+  text-align: center; word-break: keep-all; line-height: 1.5;
+}
+.ba-cell.before { background: var(--surface); border: 1px solid var(--border); color: var(--t2); }
+.ba-cell.after { background: rgba(240,160,48,0.05); border: 1px solid rgba(240,160,48,0.15); color: var(--white); font-weight: 600; }
+.ba-arrow { text-align: center; color: var(--accent); font-size: 14px; }
+
+/* ── BENEFITS ── */
+.ben-box {
+  border-radius: 16px; border: 1px solid var(--border-accent);
+  background: linear-gradient(160deg, rgba(240,160,48,0.03) 0%, transparent 40%);
+  padding: 40px 32px;
+}
+.ben-highlight { text-align: center; margin-bottom: 32px; }
+.ben-free {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 18px; font-weight: 800; color: var(--accent);
+  padding: 12px 24px; border-radius: 10px;
+  background: rgba(240,160,48,0.08); border: 1px solid rgba(240,160,48,0.2);
+  margin-bottom: 12px;
+}
+.ben-sub { font-size: 13px; color: var(--t3); }
+.ben-nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0 32px; }
+.ben-num {
+  text-align: center; padding: 20px 12px; border-radius: 12px;
+  background: var(--surface); border: 1px solid var(--border);
+}
+.ben-num-val { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: var(--accent); margin-bottom: 4px; }
+.ben-num p { font-size: 12px; color: var(--t3); line-height: 1.5; }
+.ben-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.ben-item {
+  display: flex; gap: 14px; padding: 20px 16px; border-radius: 12px;
+  background: var(--surface2); border: 1px solid var(--border);
+}
+.ben-item-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.ben-item h4 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.ben-item p { font-size: 12px; color: var(--t3); word-break: keep-all; }
+
+/* ── RECRUIT BOX ── */
+.recruit-box {
+  border-radius: 16px; overflow: hidden;
+  border: 1px solid rgba(240,160,48,0.3);
+  background: linear-gradient(160deg, rgba(240,160,48,0.06) 0%, var(--bg2) 50%);
+}
+.recruit-header {
+  padding: 28px 32px; display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+  border-bottom: 1px solid rgba(240,160,48,0.15);
+}
+.recruit-header h3 { font-size: 20px; font-weight: 800; }
+.recruit-header h3 em { font-style: normal; color: var(--accent); }
+.recruit-live {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 700; color: var(--danger);
+  padding: 6px 14px; border-radius: 100px;
+  background: rgba(255,82,82,0.1); border: 1px solid rgba(255,82,82,0.3);
+}
+.recruit-live::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--danger); animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+.recruit-body { padding: 28px 32px; }
+.recruit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+.recruit-cell { text-align: center; }
+.recruit-cell-label { font-size: 11px; color: var(--t3); margin-bottom: 4px; }
+.recruit-cell-val { font-size: 15px; font-weight: 700; color: var(--white); }
+.recruit-cta {
+  display: block; width: 100%; text-align: center;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff; font-weight: 800; font-size: 17px;
+  padding: 16px; border-radius: 12px;
+  text-decoration: none; transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 20px rgba(240,160,48,0.25);
+}
+.recruit-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(240,160,48,0.4); }
+.recruit-note { font-size: 12px; color: var(--t3); text-align: center; margin-top: 12px; }
+
+/* ── CONTACT ── */
+.contact-bar { padding: 40px 0; border-top: 1px solid var(--border); }
+.contact-inner { text-align: center; }
+.contact-place { font-size: 13px; color: var(--t3); margin-bottom: 16px; line-height: 1.6; }
+.contact-links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; }
+.contact-link { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--t1); }
+.contact-link span { color: var(--cyan); }
+.contact-link a { color: var(--cyan); text-decoration: none; }
+.contact-orgs { font-size: 11px; color: var(--t3); margin-top: 20px; letter-spacing: 0.5px; }
+
+/* ── NOTE BOX ── */
+.note-box {
+  margin-top: 32px; padding: 20px 24px; border-radius: 12px;
+  background: rgba(240,160,48,0.04); border: 1px solid rgba(240,160,48,0.15);
+  text-align: center; font-size: 13px; color: var(--t2); line-height: 1.8;
+  word-break: keep-all;
+}
+.note-box strong { color: var(--accent); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .nav-menu { display: none; }
+  .wrap { padding: 0 20px; }
+  .section { padding: 64px 0; }
+  .hero { padding: 100px 0 60px; }
+  .why-grid { grid-template-columns: 1fr; }
+  .phyai-flow { grid-template-columns: 1fr; gap: 12px; }
+  .phyai-arrow { transform: rotate(90deg); padding: 4px 0; }
+  .phyai-top, .phyai-bottom { padding-left: 20px; padding-right: 20px; }
+  .phyai-flow { padding: 0 20px 24px; }
+  .inst-grid { grid-template-columns: 1fr; }
+  .tgt-grid { grid-template-columns: repeat(2, 1fr); }
+  .cur-item { grid-template-columns: 56px 1fr; gap: 14px; padding: 20px 16px; }
+  .ben-box { padding: 28px 20px; }
+  .ben-nums { grid-template-columns: 1fr; }
+  .ben-grid { grid-template-columns: 1fr; }
+  .recruit-grid { grid-template-columns: 1fr; gap: 8px; }
+  .recruit-header, .recruit-body { padding: 20px; }
+  .hero-nums { grid-template-columns: repeat(2, 1fr); max-width: 320px; }
+  .ba-cell { font-size: 12px; padding: 12px 10px; }
+  .hero-actions { flex-direction: column; }
+  .btn-fill, .btn-ghost { width: 100%; justify-content: center; }
 }
 
-/* DESKTOP (1024px+) */
-@media (min-width:1024px) {
-  nav { padding:16px 40px; }
-  .nav-logo { font-size:14px; }
-  .section { padding:100px 40px; }
-  .why-grid { grid-template-columns:repeat(4,1fr); }
-  .instructor-grid { grid-template-columns:repeat(3,1fr); }
-  .target-grid { grid-template-columns:repeat(3,1fr); }
-  .schedule-grid { grid-template-columns:repeat(3,1fr); }
-  .benefits-grid { grid-template-columns:repeat(2,1fr); }
-  .ba-row { gap:12px; }
-  .ba-before,.ba-after { font-size:14px; padding:14px 16px; }
-}
-
-@keyframes fadeDown {
-  from { opacity:0; transform:translateY(-16px); }
-  to   { opacity:1; transform:translateY(0); }
+@media (min-width: 769px) and (max-width: 1024px) {
+  .inst-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-logo">PHYSICAL AI <em>AX</em> CAMPUS</div>
-  <ul class="nav-links">
-    <li><a href="#why">소개</a></li>
-    <li><a href="#curriculum">커리큘럼</a></li>
-    <li><a href="#instructors">강사진</a></li>
-    <li><a href="#schedule">일정</a></li>
-    <li><a href="https://bit.ly/ax-campus1" class="nav-cta">지금 신청</a></li>
-  </ul>
-</nav>
+<div class="nav">
+  <div class="wrap">
+    <div class="nav-brand">PHYSICAL AI <span>AX</span> CAMPUS</div>
+    <ul class="nav-menu">
+      <li><a href="#about">과정소개</a></li>
+      <li><a href="#curriculum">커리큘럼</a></li>
+      <li><a href="#instructors">강사진</a></li>
+      <li><a href="#benefits">혜택</a></li>
+      <li><a href="#apply" class="nav-apply">모집 안내</a></li>
+    </ul>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
-  <div>
-    <div class="hero-badge">고용노동부 KDT AI 캠퍼스 · 대한상공회의소 · KG ICT</div>
-    <h1>제조 현장을 이해하는<br><em>AI 인재,</em><br>지금 1기로 시작하세요</h1>
-    <p class="hero-sub">피지컬 AI 제조 AX 캠퍼스 1기 모집</p>
-    <p class="hero-desc">자동차·이차전지·반도체·디스플레이·철강 등 첨단 제조 산업의 AI 전환을 이끌 실무형 인재를 양성합니다.</p>
-    <a href="https://bit.ly/ax-campus1" class="hero-cta">무료로 지원하기 →</a>
-    <p class="hero-deadline">⚡ 2026년 6월 14일(일) 마감 · 지원자 많을 경우 조기 마감</p>
-    <div class="hero-stats">
-      <div class="stat-item"><div class="stat-num">420H</div><div class="stat-label">훈련시간</div></div>
-      <div class="stat-item"><div class="stat-num">12W</div><div class="stat-label">집중과정</div></div>
-      <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">단계구성</div></div>
-      <div class="stat-item"><div class="stat-num">FREE</div><div class="stat-label">전액무료</div></div>
+  <div class="wrap">
+    <div class="hero-kicker">
+      <strong>고용노동부 KDT AI 캠퍼스</strong> · 대한상공회의소 · KG ICT
+    </div>
+    <h1>제조 현장을 이해하는<br><em>AI 융합 인재</em>를<br>양성합니다</h1>
+    <p class="hero-sub">자동차·이차전지·반도체·디스플레이·철강 등 첨단 제조 산업의 AI 전환을 이끌 실무형 인재를 양성하는 교육 과정입니다.</p>
+    <div class="hero-actions">
+      <a href="#apply" class="btn-fill">모집 안내 보기 →</a>
+      <a href="#about" class="btn-ghost">과정 알아보기</a>
+    </div>
+    <div class="hero-nums">
+      <div class="hero-num-item"><div class="hero-num-val">420H</div><div class="hero-num-label">총 훈련시간</div></div>
+      <div class="hero-num-item"><div class="hero-num-val">12W</div><div class="hero-num-label">집중 과정</div></div>
+      <div class="hero-num-item"><div class="hero-num-val">5</div><div class="hero-num-label">단계 구성</div></div>
+      <div class="hero-num-item"><div class="hero-num-val">FREE</div><div class="hero-num-label">전액 무료</div></div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="divider-line"></div>
 
 <!-- WHY -->
-<section id="why">
-  <div class="section">
-    <span class="section-tag">Why 제조 AX</span>
-    <h2 class="section-title">기업이 찾는 사람은<br>단순히 <em>AI를 아는 사람</em>이 아닙니다</h2>
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Why 제조 AX</span>
+      <h2 class="sec-title">기업이 찾는 사람은<br>단순히 <em>AI를 아는 사람</em>이 아닙니다</h2>
+    </div>
     <div class="why-grid">
-      <div class="why-card"><div class="why-icon">🚀</div><h3>AI 전환은 이미 시작</h3><p>자동차·반도체·이차전지·디스플레이·철강 등 첨단 제조업에서 AI 전환이 빠르게 진행되고 있습니다.</p></div>
-      <div class="why-card"><div class="why-icon">🎯</div><h3>기업이 원하는 인재</h3><p>AI 모델이 아니라 현장 데이터를 읽고 산업 문제와 연결할 수 있는 융합 인재 수요가 급증하고 있습니다.</p></div>
-      <div class="why-card"><div class="why-icon">🧠</div><h3>핵심 역량</h3><p>현장 데이터를 읽고, 문제를 정의하고, AI를 실제 산업 문제에 연결할 수 있는 능력이 핵심입니다.</p></div>
-      <div class="why-card"><div class="why-icon">📈</div><h3>나만의 포지션</h3><p>AI를 배웠다면 이제 제조업이라는 적용 분야를 가져갈 차례입니다. 전공을 버리는 게 아니라 확장하는 과정입니다.</p></div>
+      <div class="why-card"><div class="why-card-icon">🚀</div><h3>AI 전환은 이미 시작</h3><p>자동차·반도체·이차전지·디스플레이·철강 등 첨단 제조업에서 AI 전환이 빠르게 진행되고 있습니다.</p></div>
+      <div class="why-card"><div class="why-card-icon">🎯</div><h3>기업이 원하는 인재</h3><p>AI 모델이 아니라 현장 데이터를 읽고 산업 문제와 연결할 수 있는 융합 인재 수요가 급증하고 있습니다.</p></div>
+      <div class="why-card"><div class="why-card-icon">🧠</div><h3>핵심 역량</h3><p>현장 데이터를 읽고 문제를 정의하고, AI를 실제 산업 문제에 연결할 수 있는 능력이 핵심입니다.</p></div>
+      <div class="why-card"><div class="why-card-icon">📈</div><h3>나만의 포지션</h3><p>AI를 배웠다면 이제 제조업이라는 적용 분야를 가져갈 차례입니다. 전공을 확장하는 과정입니다.</p></div>
     </div>
   </div>
 </section>
-
-<div class="divider"></div>
 
 <!-- PHYSICAL AI -->
-<section id="phyai">
-  <div class="section">
-    <span class="section-tag">Physical AI</span>
-    <h2 class="section-title"><em>피지컬 AI</em>란 무엇인가</h2>
-    <div class="phyai-wrap">
-      <p style="text-align:center;color:var(--gray);font-size:14px;margin-bottom:24px;">물리 데이터를 이해하고, 현실을 판단·제어하는 AI</p>
+<section class="section alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Physical AI</span>
+      <h2 class="sec-title"><em>피지컬 AI</em>란 무엇인가</h2>
+      <p class="sec-desc">물리 데이터를 이해하고, 현실을 판단·제어하는 AI 기술입니다.</p>
+    </div>
+    <div class="phyai-box">
+      <div class="phyai-top"></div>
       <div class="phyai-flow">
-        <div class="phyai-step">
-          <div class="phyai-step-num">01</div>
-          <div><h4>물리 데이터</h4><p>진동, 소음, 온도, 센서 신호</p></div>
-        </div>
-        <div class="phyai-arrow">↓</div>
-        <div class="phyai-step">
-          <div class="phyai-step-num">02</div>
-          <div><h4>AI 해석</h4><p>이상 징후 감지, 패턴 분석</p></div>
-        </div>
-        <div class="phyai-arrow">↓</div>
-        <div class="phyai-step">
-          <div class="phyai-step-num">03</div>
-          <div><h4>현장 판단/제어</h4><p>이상 징후 판단, 공정 문제 발견</p></div>
-        </div>
+        <div class="phyai-step"><div class="phyai-step-no">01</div><h4>물리 데이터</h4><p>진동, 소음, 온도, 센서 신호</p></div>
+        <div class="phyai-arrow">→</div>
+        <div class="phyai-step"><div class="phyai-step-no">02</div><h4>AI 해석</h4><p>이상 징후 감지, 패턴 분석</p></div>
+        <div class="phyai-arrow">→</div>
+        <div class="phyai-step"><div class="phyai-step-no">03</div><h4>현장 판단/제어</h4><p>이상 징후 판단, 공정 문제 발견</p></div>
       </div>
-      <p class="phyai-desc">피지컬 AI는 공장 설비와 공정에서 나오는 물리 데이터를 AI로 해석하는 기술입니다. 데이터를 바탕으로 설비 이상 징후와 공정 문제를 판단하고, 현실의 데이터를 실제 제조 현장의 판단과 제어로 연결합니다.</p>
-      <div class="highlight-box"><strong>공장이 스스로 이상을 감지하고 판단할 수 있도록 만드는 기술 방향</strong></div>
+      <div class="phyai-bottom">
+        <p>피지컬 AI는 공장 설비와 공정에서 나오는 물리 데이터를 AI로 해석하는 기술입니다.<br>데이터를 바탕으로 설비 이상 징후와 공정 문제를 판단하고, 현실의 데이터를 실제 제조 현장의 판단과 제어로 연결합니다.</p>
+        <br><p><strong>공장이 스스로 이상을 감지하고 판단할 수 있도록 만드는 기술 방향</strong></p>
+      </div>
     </div>
   </div>
 </section>
-
-<div class="divider"></div>
 
 <!-- CURRICULUM -->
-<section id="curriculum">
-  <div class="section">
-    <span class="section-tag">Curriculum</span>
-    <h2 class="section-title">12주 동안 <em>무엇을 배우나요?</em></h2>
-    <p style="color:var(--gray);font-size:13px;margin-bottom:36px;word-break:keep-all;line-height:1.7;">공정 이해부터 하드웨어 제어, 제조 AI 모델링, 대시보드, 최종 프로젝트까지 한 흐름으로 경험합니다.</p>
-    <div class="curriculum-timeline">
-      <div class="phase">
-        <div class="phase-inner">
-          <div class="phase-header"><span class="phase-label">PHASE 1</span><span class="phase-week">1주차</span></div>
-          <div class="phase-title">제조 현장과 피지컬 AI 이해</div>
-          <div class="phase-tags">
-            <span class="phase-tag">반도체 공정</span><span class="phase-tag">이차전지 공정</span><span class="phase-tag">자동차 공정</span>
-            <span class="phase-tag">디스플레이 공정</span><span class="phase-tag">피지컬 AI 개념</span><span class="phase-tag">센서·설비 데이터 흐름</span>
-          </div>
+<section class="section" id="curriculum">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Curriculum</span>
+      <h2 class="sec-title">12주 동안 <em>무엇을 배우나요?</em></h2>
+      <p class="sec-desc">공정 이해부터 하드웨어 제어, 제조 AI 모델링, 대시보드, 최종 프로젝트까지 한 흐름으로 경험합니다.</p>
+    </div>
+    <div class="cur-list">
+      <div class="cur-item">
+        <div class="cur-badge"><span class="cur-badge-phase">PHASE 1</span><span class="cur-badge-week">1주차</span></div>
+        <div class="cur-body">
+          <h4>제조 현장과 피지컬 AI 이해</h4>
+          <div class="cur-tags"><span class="cur-tag">반도체 공정</span><span class="cur-tag">이차전지 공정</span><span class="cur-tag">자동차 공정</span><span class="cur-tag">디스플레이 공정</span><span class="cur-tag">피지컬 AI 개념</span><span class="cur-tag">센서·설비 데이터 흐름</span></div>
         </div>
       </div>
-      <div class="phase">
-        <div class="phase-inner">
-          <div class="phase-header"><span class="phase-label">PHASE 2</span><span class="phase-week">2~3주차</span></div>
-          <div class="phase-title">하드웨어 제어를 위한 C언어</div>
-          <div class="phase-tags">
-            <span class="phase-tag">변수·조건문·반복문</span><span class="phase-tag">포인터·구조체</span>
-            <span class="phase-tag">파일 입출력</span><span class="phase-tag">비트 연산</span>
-          </div>
+      <div class="cur-item">
+        <div class="cur-badge"><span class="cur-badge-phase">PHASE 2</span><span class="cur-badge-week">2~3주차</span></div>
+        <div class="cur-body">
+          <h4>하드웨어 제어를 위한 C언어</h4>
+          <div class="cur-tags"><span class="cur-tag">변수·조건문·반복문</span><span class="cur-tag">포인터·구조체</span><span class="cur-tag">파일 입출력</span><span class="cur-tag">비트 연산</span></div>
         </div>
       </div>
-      <div class="phase">
-        <div class="phase-inner">
-          <div class="phase-header"><span class="phase-label">PHASE 3</span><span class="phase-week">4~6주차</span></div>
-          <div class="phase-title">임베디드 시스템 실습 (하드웨어 제어)</div>
-          <div class="phase-tags">
-            <span class="phase-tag">STM Cortex-M4 보드</span><span class="phase-tag">센서 제어</span>
-            <span class="phase-tag">UART/I2C/SPI/CAN 통신</span><span class="phase-tag">BLE·이더넷</span>
-            <span class="phase-tag">메모리 제어</span><span class="phase-tag">Bootloader</span>
-          </div>
+      <div class="cur-item">
+        <div class="cur-badge"><span class="cur-badge-phase">PHASE 3</span><span class="cur-badge-week">4~6주차</span></div>
+        <div class="cur-body">
+          <h4>임베디드 시스템 실습 (하드웨어 제어)</h4>
+          <div class="cur-tags"><span class="cur-tag">STM Cortex-M4 보드</span><span class="cur-tag">센서 제어</span><span class="cur-tag">UART/I2C/SPI/CAN 통신</span><span class="cur-tag">BLE·이더넷</span><span class="cur-tag">메모리 제어</span><span class="cur-tag">Bootloader</span></div>
         </div>
       </div>
-      <div class="phase">
-        <div class="phase-inner">
-          <div class="phase-header"><span class="phase-label">PHASE 4</span><span class="phase-week">7~11주차</span></div>
-          <div class="phase-title">Python으로 제조 AI 실무 구현</div>
-          <div class="phase-tags">
-            <span class="phase-tag">Python 기초</span><span class="phase-tag">Pandas 데이터 전처리</span>
-            <span class="phase-tag">Streamlit 대시보드</span><span class="phase-tag">실시간 데이터 시각화</span>
-            <span class="phase-tag">머신러닝 모델링</span><span class="phase-tag">불량 판정 분류</span>
-            <span class="phase-tag">품질 예측 회귀</span><span class="phase-tag">이상 탐지</span>
-            <span class="phase-tag">예지보전</span><span class="phase-tag">ChatGPT 활용</span>
-          </div>
+      <div class="cur-item">
+        <div class="cur-badge"><span class="cur-badge-phase">PHASE 4</span><span class="cur-badge-week">7~11주차</span></div>
+        <div class="cur-body">
+          <h4>Python으로 제조 AI 실무 구현</h4>
+          <div class="cur-tags"><span class="cur-tag">Python 기초</span><span class="cur-tag">Pandas 데이터 전처리</span><span class="cur-tag">Streamlit 대시보드</span><span class="cur-tag">실시간 데이터 시각화</span><span class="cur-tag">머신러닝 모델링</span><span class="cur-tag">불량 판정 분류</span><span class="cur-tag">품질 예측 회귀</span><span class="cur-tag">이상 탐지</span><span class="cur-tag">예지보전</span><span class="cur-tag">ChatGPT 활용</span></div>
         </div>
       </div>
-      <div class="phase">
-        <div class="phase-inner" style="border-color:rgba(245,166,35,0.3);">
-          <div class="phase-header">
-            <span class="phase-label" style="border-color:rgba(245,166,35,0.4);color:var(--accent);background:rgba(245,166,35,0.1);">PHASE 5</span>
-            <span class="phase-week">12주차</span>
-          </div>
-          <div class="phase-title">도메인 융합 파이널 프로젝트 🏆</div>
-          <div class="phase-tags">
-            <span class="phase-tag">주제 선정·요구사항 정의</span><span class="phase-tag">센서 데이터 수집·저장</span>
-            <span class="phase-tag">AI 모델 적용·검증</span><span class="phase-tag">대시보드 완성</span>
-            <span class="phase-tag">발표 및 시연</span>
-          </div>
+      <div class="cur-item final">
+        <div class="cur-badge"><span class="cur-badge-phase">PHASE 5</span><span class="cur-badge-week">12주차</span></div>
+        <div class="cur-body">
+          <h4>도메인 융합 파이널 프로젝트 🏆</h4>
+          <div class="cur-tags"><span class="cur-tag">주제 선정·요구사항 정의</span><span class="cur-tag">센서 데이터 수집·저장</span><span class="cur-tag">AI 모델 적용·검증</span><span class="cur-tag">대시보드 완성</span><span class="cur-tag">발표 및 시연</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<div class="divider"></div>
 
 <!-- TARGET -->
-<section id="target">
-  <div class="section">
-    <span class="section-tag">Who</span>
-    <h2 class="section-title">이런 분께 <em>추천합니다</em></h2>
-    <div class="target-grid">
-      <div class="target-card"><div class="target-num">01</div><p>이공계 전공자</p></div>
-      <div class="target-card"><div class="target-num">02</div><p>자동차·이차전지·반도체·디스플레이·철강 등 첨단 제조 산업 취업 희망자</p></div>
-      <div class="target-card"><div class="target-num">03</div><p>AI를 배웠지만 적용 분야가 고민인 구직자</p></div>
-      <div class="target-card"><div class="target-num">04</div><p>차별화된 산업 분야를 찾는 분</p></div>
-      <div class="target-card"><div class="target-num">05</div><p>프로젝트 포트폴리오가 필요한 분</p></div>
-      <div class="target-card"><div class="target-num">06</div><p>제조업 AX 분야로 커리어를 확장하고 싶은 청년</p></div>
+<section class="section alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Who</span>
+      <h2 class="sec-title">이런 분께 <em>추천합니다</em></h2>
     </div>
-    <h3 style="font-size:20px;font-weight:700;margin:48px 0 20px;">이 과정으로 바뀌는 <em style="color:var(--accent);">나의 포지션</em></h3>
-    <div class="ba-header">
-      <span class="h-before">Before</span><span></span><span class="h-after">After</span>
+    <div class="tgt-grid">
+      <div class="tgt-item"><div class="tgt-no">01</div><p>이공계 전공자</p></div>
+      <div class="tgt-item"><div class="tgt-no">02</div><p>자동차·이차전지·반도체·디스플레이·철강 등 첨단 제조 산업 취업 희망자</p></div>
+      <div class="tgt-item"><div class="tgt-no">03</div><p>AI를 배웠지만 적용 분야가 고민인 구직자</p></div>
+      <div class="tgt-item"><div class="tgt-no">04</div><p>차별화된 산업 분야를 찾는 분</p></div>
+      <div class="tgt-item"><div class="tgt-no">05</div><p>프로젝트 포트폴리오가 필요한 분</p></div>
+      <div class="tgt-item"><div class="tgt-no">06</div><p>제조업 AX 분야로 커리어를 확장하고 싶은 청년</p></div>
     </div>
-    <div class="ba-wrap">
-      <div class="ba-row"><div class="ba-before">AI를 배운 구직자</div><div class="ba-arr">→</div><div class="ba-after">제조업 데이터를 이해하는 AI 융합 인재</div></div>
-      <div class="ba-row"><div class="ba-before">Python을 할 줄 아는 지원자</div><div class="ba-arr">→</div><div class="ba-after">센서·설비·공정 데이터를 AI와 연결하는 지원자</div></div>
-      <div class="ba-row"><div class="ba-before">일반 데이터 분석 경험자</div><div class="ba-arr">→</div><div class="ba-after">제조 현장의 문제를 이해하는 인재</div></div>
-      <div class="ba-row"><div class="ba-before">기계·전기전자·컴퓨터 전공자</div><div class="ba-arr">→</div><div class="ba-after">제조업 AX 직무로 확장한 인재</div></div>
+
+    <h3 class="ba-title">이 과정으로 바뀌는 <em>나의 포지션</em></h3>
+    <div class="ba-header"><span class="h-b">Before</span><span></span><span class="h-a">After</span></div>
+    <div class="ba-grid">
+      <div class="ba-row"><div class="ba-cell before">AI를 배운 구직자</div><div class="ba-arrow">→</div><div class="ba-cell after">제조업 데이터를 이해하는 AI 융합 인재</div></div>
+      <div class="ba-row"><div class="ba-cell before">Python을 할 줄 아는 지원자</div><div class="ba-arrow">→</div><div class="ba-cell after">센서·설비·공정 데이터를 AI와 연결하는 지원자</div></div>
+      <div class="ba-row"><div class="ba-cell before">일반 데이터 분석 경험자</div><div class="ba-arrow">→</div><div class="ba-cell after">제조 현장의 문제를 이해하는 인재</div></div>
+      <div class="ba-row"><div class="ba-cell before">기계·전기전자·컴퓨터 전공자</div><div class="ba-arrow">→</div><div class="ba-cell after">제조업 AX 직무로 확장한 인재</div></div>
     </div>
-    <div class="highlight-box">전공을 버리는 AI 전환이 아니라, <strong>기존 전공과 경험을 제조업 AX 직무로 확장하는 과정</strong></div>
+    <div class="note-box">전공을 버리는 AI 전환이 아니라, <strong>기존 전공과 경험을 제조업 AX 직무로 확장하는 과정</strong></div>
   </div>
 </section>
 
-<div class="divider"></div>
-
 <!-- INSTRUCTORS -->
-<section id="instructors">
-  <div class="section">
-    <span class="section-tag">Instructors</span>
-    <h2 class="section-title">제조 AX <em>현업 전문가</em> 강사진</h2>
-    <div class="instructor-grid">
-      <div class="instructor-card">
-        <div class="instructor-avatar">👨‍💼</div>
-        <div class="instructor-name">박달수</div>
-        <div class="instructor-spec">스마트팩토리 · 제조 DX</div>
-        <ul class="instructor-list">
+<section class="section" id="instructors">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Instructors</span>
+      <h2 class="sec-title">제조 AX <em>현업 전문가</em> 강사진</h2>
+    </div>
+    <div class="inst-grid">
+      <div class="inst-card">
+        <div class="inst-avatar">👨‍💼</div>
+        <div class="inst-name">박달수</div>
+        <div class="inst-role">스마트팩토리 · 제조 DX</div>
+        <ul class="inst-list">
           <li>전) 현대자동차 1차 벤더(클러스터)</li>
           <li>전) LG전자 1차 벤더</li>
           <li>전) 주식회사 코원시스템 공장장</li>
@@ -565,11 +548,11 @@ nav {
           <li>Power BI·Tableau·Python 데이터 분석</li>
         </ul>
       </div>
-      <div class="instructor-card">
-        <div class="instructor-avatar">👨‍🔬</div>
-        <div class="instructor-name">강웅빈</div>
-        <div class="instructor-spec">디지털 트윈 · 배터리 AI</div>
-        <ul class="instructor-list">
+      <div class="inst-card">
+        <div class="inst-avatar">👨‍🔬</div>
+        <div class="inst-name">강용빈</div>
+        <div class="inst-role">디지털 트윈 · 배터리 AI</div>
+        <ul class="inst-list">
           <li>전) LG디스플레이 Smart Process팀 책임연구원</li>
           <li>전) 씨엠모빌리티 AI.Data연구팀 팀장</li>
           <li>전) 멘테크 Data솔루션팀 부장/팀장</li>
@@ -578,11 +561,11 @@ nav {
           <li>MLOps·AI Agent 활용</li>
         </ul>
       </div>
-      <div class="instructor-card">
-        <div class="instructor-avatar">⚗️</div>
-        <div class="instructor-name">조종수</div>
-        <div class="instructor-spec">이차전지 소재 · R&D</div>
-        <ul class="instructor-list">
+      <div class="inst-card">
+        <div class="inst-avatar">⚗️</div>
+        <div class="inst-name">조종수</div>
+        <div class="inst-role">이차전지 소재 · R&D</div>
+        <ul class="inst-list">
           <li>전) 솔라엣지 테크놀로지스 R&D 그룹장</li>
           <li>전) MK Electron Co. R&D Director</li>
           <li>Si 음극 소재 개발·고체전해질 개발</li>
@@ -595,84 +578,73 @@ nav {
   </div>
 </section>
 
-<div class="divider"></div>
-
 <!-- BENEFITS -->
-<section id="benefits">
-  <div class="section">
-    <span class="section-tag">Benefits</span>
-    <h2 class="section-title">과정 <em>혜택</em></h2>
-    <div class="benefits-wrap">
-      <div style="text-align:center;">
-        <div class="free-badge">💰 교육비 전액 무료 (KDT AI 캠퍼스 과정)</div>
-        <p style="color:var(--gray);font-size:12px;word-break:keep-all;line-height:1.6;">국민내일배움카드 보유 및 발급 가능자 대상 · 카드가 없어도 지금 발급 가능</p>
-        <div class="money-detail">
-          <div class="money-item"><div class="amount">월 최대 40만원</div><p>고용노동부 훈련장려금<br>(출석 요건 충족 시 신청 가능)</p></div>
-          <div class="money-item"><div class="amount">KG ICT 인증</div><p>수료증 발급<br>(420시간 수료 시)</p></div>
-          <div class="money-item"><div class="amount">우수인재 추천서</div><p>KG ICT 인증<br>(우수 훈련생 대상)</p></div>
+<section class="section alt" id="benefits">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Benefits</span>
+      <h2 class="sec-title">과정 <em>혜택</em></h2>
+    </div>
+    <div class="ben-box">
+      <div class="ben-highlight">
+        <div class="ben-free">💰 교육비 전액 무료 (KDT AI 캠퍼스 과정)</div>
+        <div class="ben-sub">국민내일배움카드 보유 및 발급 가능자 대상 · 카드가 없어도 지금 발급 가능</div>
+      </div>
+      <div class="ben-nums">
+        <div class="ben-num"><div class="ben-num-val">월 최대 40만원</div><p>고용노동부 훈련장려금<br>(출석 요건 충족 시 신청 가능)</p></div>
+        <div class="ben-num"><div class="ben-num-val">KG ICT 인증</div><p>수료증 발급<br>(80% 이상 수료 시)</p></div>
+        <div class="ben-num"><div class="ben-num-val">우수인재 추천서</div><p>KG ICT 인증<br>(우수 훈련생 대상)</p></div>
+      </div>
+      <div class="ben-grid">
+        <div class="ben-item"><div class="ben-item-icon">🏭</div><div><h4>제조 AX 현업 강사진</h4><p>실제 산업 현장 경험을 갖춘 전문가들이 직접 교육</p></div></div>
+        <div class="ben-item"><div class="ben-item-icon">💼</div><div><h4>실무형 훈련</h4><p>제조업 AX 직무 이해를 위한 프로젝트 중심 실습</p></div></div>
+        <div class="ben-item"><div class="ben-item-icon">📁</div><div><h4>포트폴리오 구성 지원</h4><p>면접에서 설명 가능한 제조업 AX 프로젝트 경험</p></div></div>
+        <div class="ben-item"><div class="ben-item-icon">🎯</div><div><h4>취업 컨설팅 및 면접 준비</h4><p>수료 후 제조 AI 직무 취업 연계 지원</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECRUIT -->
+<section class="section" id="apply">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Apply</span>
+      <h2 class="sec-title">현재 <em>모집중인 기수</em></h2>
+    </div>
+    <div class="recruit-box">
+      <div class="recruit-header">
+        <h3><em>1기</em> 교육생 모집</h3>
+        <div class="recruit-live">모집중</div>
+      </div>
+      <div class="recruit-body">
+        <div class="recruit-grid">
+          <div class="recruit-cell"><div class="recruit-cell-label">모집 기간</div><div class="recruit-cell-val">2026.5.18 ~ 6.14</div></div>
+          <div class="recruit-cell"><div class="recruit-cell-label">훈련 기간</div><div class="recruit-cell-val">2026.6.23 ~ 9.5</div></div>
+          <div class="recruit-cell"><div class="recruit-cell-label">훈련 장소</div><div class="recruit-cell-val">오르드 AX 캠퍼스 (서울 종로구)</div></div>
         </div>
-      </div>
-      <div class="benefits-grid">
-        <div class="benefit-item"><div class="benefit-icon">🏭</div><div><h4>제조 AX 현업 강사진</h4><p>실제 산업 현장 경험을 갖춘 전문가들이 직접 교육</p></div></div>
-        <div class="benefit-item"><div class="benefit-icon">💼</div><div><h4>실무형 훈련</h4><p>제조업 AX 직무 이해를 위한 프로젝트 중심 실습</p></div></div>
-        <div class="benefit-item"><div class="benefit-icon">📁</div><div><h4>포트폴리오 구성 지원</h4><p>면접에서 설명 가능한 제조업 AX 프로젝트 경험</p></div></div>
-        <div class="benefit-item"><div class="benefit-icon">🎯</div><div><h4>취업 컨설팅 및 면접 준비</h4><p>수료 후 제조 AI 직무 취업 연계 지원</p></div></div>
+        <a href="https://bit.ly/ax-campus1" class="recruit-cta">1기 지원하기 →</a>
+        <p class="recruit-note">접수 순 비대면 전화 인터뷰 진행 · 합격자 6.16(화) 18시 이후 개별 안내 · 지원자 많을 경우 조기 마감</p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- SCHEDULE -->
-<section id="schedule">
-  <div class="section">
-    <span class="section-tag">Schedule</span>
-    <h2 class="section-title">교육 <em>일정</em></h2>
-    <div class="schedule-grid">
-      <div class="schedule-card"><h4>모집 기간</h4><div class="schedule-date">2026.5.18 ~ 6.14</div><div class="schedule-desc">지원자 많을 경우 조기 마감</div></div>
-      <div class="schedule-card"><h4>면접 기간</h4><div class="schedule-date">접수 순으로 진행</div><div class="schedule-desc">비대면 개별 전화 인터뷰</div></div>
-      <div class="schedule-card"><h4>합격 발표</h4><div class="schedule-date">2026.6.16(화) 18시</div><div class="schedule-desc">합격자에 한해 문자·이메일 안내</div></div>
-      <div class="schedule-card"><h4>충원 기간</h4><div class="schedule-date">2026.6.29(월)까지</div><div class="schedule-desc">추가 합격자 개별 안내</div></div>
-      <div class="schedule-card highlight"><h4>훈련 기간</h4><div class="schedule-date">2026.6.23 ~ 9.5</div><div class="schedule-desc">총 420시간 · 오르드 AX 캠퍼스 (서울 종로구)</div></div>
-    </div>
-    <h3 style="font-size:20px;font-weight:700;margin:48px 0 24px;">선발 절차</h3>
-    <div class="process-flow">
-      <div class="process-step"><div class="process-circle">📋</div><h4>훈련신청</h4><p>온라인 접수</p></div>
-      <div class="process-arrow">›</div>
-      <div class="process-step"><div class="process-circle">📄</div><h4>서류검토</h4><p>지원서 확인</p></div>
-      <div class="process-arrow">›</div>
-      <div class="process-step"><div class="process-circle">📞</div><h4>전화면접</h4><p>개별 인터뷰</p></div>
-      <div class="process-arrow">›</div>
-      <div class="process-step"><div class="process-circle">📣</div><h4>합격발표</h4><p>문자·이메일</p></div>
-      <div class="process-arrow">›</div>
-      <div class="process-step"><div class="process-circle">🎓</div><h4>훈련시작</h4><p>6.23 시작</p></div>
-    </div>
-    <div class="highlight-box" style="margin-top:24px;">서류 합격자에 한해 <strong>개별 연락</strong>드립니다. 지원자가 많을 경우 <strong>조기 마감</strong>될 수 있습니다.</div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- CTA -->
-<section class="cta-section">
-  <h2>제조 현장의 데이터를 읽는<br><em>AI 인재</em>가 되세요</h2>
-  <p>2026년 6월 14일(일)까지 무료로 지원하세요.<br>전액 무료 · 420시간 실습 중심 · 제조 AI 직무 취업 연계</p>
-  <div class="cta-buttons">
-    <a href="https://bit.ly/ax-campus1" class="btn-primary">지금 신청하기 →</a>
-    <a href="tel:02-585-0522" class="btn-secondary">전화 문의</a>
-  </div>
-</section>
+<div class="divider-line"></div>
 
 <!-- CONTACT -->
 <div class="contact-bar">
-  <p>피지컬 AI 제조 AX 캠퍼스 · 오르드 AX 캠퍼스<br>서울특별시 종로구 인사동길 12 대일빌딩 15층</p>
-  <div class="contact-info">
-    <div class="contact-item"><span>📞</span> 02-585-0522 (평일 09:00~18:00)</div>
-    <div class="contact-item"><span>✉️</span> info@axcampus.co.kr</div>
-    <div class="contact-item"><span>🔗</span><a href="https://bit.ly/ax-campus1" style="color:var(--cyan);">bit.ly/ax-campus1</a></div>
+  <div class="wrap">
+    <div class="contact-inner">
+      <p class="contact-place">피지컬 AI 제조 AX 캠퍼스 · 오르드 AX 캠퍼스<br>서울특별시 종로구 인사동길 12 대일빌딩 15층</p>
+      <div class="contact-links">
+        <div class="contact-link"><span>📞</span> 02-585-0522 (평일 09:00~18:00)</div>
+        <div class="contact-link"><span>✉️</span> info@axcampus.co.kr</div>
+        <div class="contact-link"><span>🔗</span> <a href="https://bit.ly/ax-campus1">bit.ly/ax-campus1</a></div>
+      </div>
+      <p class="contact-orgs">고용노동부 K-디지털 트레이닝(KDT) AI 캠퍼스 사업 · 대한상공회의소 · KG ICT</p>
+    </div>
   </div>
-  <p style="margin-top:16px;font-size:11px;color:#445566;">고용노동부 K-디지털 트레이닝(KDT) AI 캠퍼스 사업 · 대한상공회의소 · KG ICT</p>
 </div>
 
 </body>
